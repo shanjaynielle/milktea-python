@@ -111,7 +111,7 @@ class Cart(Toplevel):
         if milktea_total == 0:
             messagebox.showwarning("Notice","You don't have any orders.")
         else:    
-            payment = askinteger("Enter Payment","The total of your order is "+str(milktea_total)+". How much will you pay?")
+            payment = askinteger("Enter Payment","The total of your order is "+str(milktea_total)+". How much will you pay?", justify = "center")
             change_coins = payment - milktea_total
             if payment < milktea_total:
                 messagebox.showerror("Payment error", "You have entered an insufficient amount. Please try again.")
@@ -553,28 +553,28 @@ class MainMenu(Toplevel):
 
         #MAIN MENU WINDOW-BACKGROUND
         background_img = PhotoImage(file = f"backgroundmm.png")
-        background = canvas.create_image(371.0, 241.5,image=background_img)
+        background = canvas.create_image(366.0, 243.5,image=background_img)
 
         #MAIN MENU WINDOW-BUTTONS
         imgmt = PhotoImage(file = f"img0mm.png")
         mtbutton = Button(mainmenu, image = imgmt,borderwidth = 0,highlightthickness = 0,
             command = mainmenu.btn_milktea,relief = "flat")
-        mtbutton.place(x = 300, y = 152,width = 130,height = 74)
+        mtbutton.place(x = 300, y = 113,width = 130,height = 74)
 
         imft = PhotoImage(file = f"img1mm.png")
         ftbutton = Button(mainmenu, image = imft,borderwidth = 0,highlightthickness = 0,
             command = mainmenu.btn_fruittea,relief = "flat")
-        ftbutton.place(x = 300, y = 235,width = 130,height = 74)
+        ftbutton.place(x = 300, y = 196.03,width = 130,height = 74)
 
         imgc = PhotoImage(file = f"imgsmoothies.png")
         chocobutton = Button(mainmenu, image = imgc,borderwidth = 0,highlightthickness = 0,
             command = mainmenu.btn_smoothies,relief = "flat")
-        chocobutton.place(x = 300, y = 318,width = 130,height = 74)
+        chocobutton.place(x = 300, y = 279.07,width = 130,height = 74)
 
         imgcrt = PhotoImage(file = f"imgcart.png") 
         chocobutton = Button(mainmenu, image = imgcrt,borderwidth = 0,highlightthickness = 0,
             command = mainmenu.btn_cart,relief = "flat")
-        chocobutton.place(x = 300, y = 405,width = 130,height = 74)
+        chocobutton.place(x = 300, y = 397,width = 130,height = 74)
 
         #MAIN MENU WINDOW-LOOPINGS
         mainmenu.resizable(False, False)
