@@ -5,6 +5,9 @@ from tkinter.simpledialog import askstring
 from tkinter.messagebox import showinfo
 import os
 
+
+
+
 #CLASS OF CART WINDOW
 class Cart(Toplevel):
     def __init__(self, cart):
@@ -29,6 +32,8 @@ class Cart(Toplevel):
         y_coordinate = int((screen_height/2) - (window_height/2))
         cartwindow.geometry("{}x{}+{}+{}".format(window_width, window_height, x_coordinate, y_coordinate))
 
+        cartwindow.protocol("WM_DELETE_WINDOW", disable_event)
+        cartwindow.iconbitmap('icon.ico')
         cartwindow.title("Cart Frame: "+current_user)
         canvas = Canvas(cartwindow,bg = "#ffffff",height = 490,width = 730,
             bd = 0,highlightthickness = 0,relief = "ridge")
@@ -47,16 +52,16 @@ class Cart(Toplevel):
         total_label.place(x=325, y=396)
 
         #CART WINDOW-BACKGROUND
-        background_img = PhotoImage(file = f"backgroundcart.png")
+        background_img = PhotoImage(file = f"images/backgroundcart.png")
         background = canvas.create_image(367.5, 242.5,image=background_img)
 
         #CART WINDOW-BUTTONS
-        imgco = PhotoImage(file = f"imgcartcheckout.png") #NO FUNCTION YET -- WHEN CLICKED DIALOG BOX WITH PAYMENT INPUT
+        imgco = PhotoImage(file = f"images/imgcartcheckout.png") #NO FUNCTION YET -- WHEN CLICKED DIALOG BOX WITH PAYMENT INPUT
         checkoutbutton = Button(cartwindow,image = imgco,borderwidth = 0,highlightthickness = 0,
             command = cartwindow.check_out, relief = "flat")
         checkoutbutton.place(x = 369, y = 436,width = 124,height = 41)
 
-        imgcartback = PhotoImage(file = f"imgcartback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
+        imgcartback = PhotoImage(file = f"images/imgcartback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
         cartbackbutton = Button(cartwindow,image = imgcartback,borderwidth = 0,highlightthickness = 0,
             command = cartwindow.btn_clicked, relief = "flat")
         cartbackbutton.place(x = 235, y = 436,width = 124,height = 41)
@@ -137,22 +142,24 @@ class Smoothies(Toplevel):
         y_coordinate = int((screen_height/2) - (window_height/2))
         smoothieswindow.geometry("{}x{}+{}+{}".format(window_width, window_height, x_coordinate, y_coordinate))
 
+        smoothieswindow.protocol("WM_DELETE_WINDOW", disable_event)
+        smoothieswindow.iconbitmap('icon.ico')
         smoothieswindow.title("Smoothies Frame: "+current_user)
         canvas = Canvas(smoothieswindow,bg = "#ffffff",height = 490,width = 730,
             bd = 0,highlightthickness = 0,relief = "ridge")
         canvas.place(x = 0, y = 0)
 
         #SMOOTHIES WINDOW-BACKGROUND
-        background_img = PhotoImage(file = f"backgroundc.png")
+        background_img = PhotoImage(file = f"images/backgroundc.png")
         background = canvas.create_image(367.5, 242.5,image=background_img)
 
         #SMOOTHIES WINDOW-BUTTONS
-        imgorders = PhotoImage(file = f"img0mt.png")
+        imgorders = PhotoImage(file = f"images/img0mt.png")
         orderbuttons = Button(smoothieswindow, image = imgorders,borderwidth = 0,highlightthickness = 0,
             command = smoothieswindow.order,relief = "flat")
         orderbuttons.place(x = 378, y = 403,width = 123,height = 50)
 
-        imgcback = PhotoImage(file = f"imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
+        imgcback = PhotoImage(file = f"images/imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
         cbackbutton = Button(smoothieswindow,image = imgcback,borderwidth = 0,highlightthickness = 0,
             command = smoothieswindow.btn_clicked, relief = "flat")
         cbackbutton.place(x = 229, y = 405,width = 124,height = 41)
@@ -252,6 +259,8 @@ class FruitTea(Toplevel):
         y_coordinate = int((screen_height/2) - (window_height/2))
         fruitteawindow.geometry("{}x{}+{}+{}".format(window_width, window_height, x_coordinate, y_coordinate))
 
+        fruitteawindow.protocol("WM_DELETE_WINDOW", disable_event)
+        fruitteawindow.iconbitmap('icon.ico')
         fruitteawindow.title("Fruit Tea Frame: "+current_user)
         fruitteawindow.configure(bg = "#ffffff")
         canvas = Canvas(fruitteawindow,bg = "#ffffff",height = 490,width = 730,
@@ -259,16 +268,16 @@ class FruitTea(Toplevel):
         canvas.place(x = 0, y = 0)
 
         #FRUITTEA WINDOW-BACKGROUND
-        background_img = PhotoImage(file = f"backgroundft.png")
+        background_img = PhotoImage(file = f"images/backgroundft.png")
         background = canvas.create_image(367.5, 242.5,image=background_img)
 
         #FRUITTEA WINDOW-BUTTONS
-        imgorderft = PhotoImage(file = f"img0mt.png")
+        imgorderft = PhotoImage(file = f"images/img0mt.png")
         orderbuttonft = Button(fruitteawindow, image = imgorderft,borderwidth = 0,highlightthickness = 0,
             command = fruitteawindow.order,relief = "flat")
         orderbuttonft.place(x = 378, y = 430,width = 123,height = 50)
 
-        imgftback = PhotoImage(file = f"imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
+        imgftback = PhotoImage(file = f"images/imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
         ftbackbutton = Button(fruitteawindow,image = imgftback,borderwidth = 0,highlightthickness = 0,
             command = fruitteawindow.btn_clicked, relief = "flat")
         ftbackbutton.place(x = 229, y = 435,width = 124,height = 41)
@@ -394,6 +403,8 @@ class MilkTea(Toplevel):
         y_coordinate = int((screen_height/2) - (window_height/2))
         milkteawindow.geometry("{}x{}+{}+{}".format(window_width, window_height, x_coordinate, y_coordinate))
 
+        milkteawindow.protocol("WM_DELETE_WINDOW", disable_event)
+        milkteawindow.iconbitmap('icon.ico')
         milkteawindow.title("Milktea Frame: "+current_user)
         milkteawindow.configure(bg = "#ffffff")
         canvas = Canvas(milkteawindow,bg = "#ffffff",height = 490,width = 730,
@@ -401,16 +412,16 @@ class MilkTea(Toplevel):
         canvas.place(x = 0, y = 0)
 
         #MILKTEA WINDOW-BACKGROUND
-        background_img = PhotoImage(file = f"backgroundmt.png")
+        background_img = PhotoImage(file = f"images/backgroundmt.png")
         background = canvas.create_image(367.5, 242.5,image=background_img)
 
         #MILKTEA WINDOW-BUTTONS
-        imgordermt = PhotoImage(file = f"img0mt.png")
+        imgordermt = PhotoImage(file = f"images/img0mt.png")
         orderbuttonmt = Button(milkteawindow,image = imgordermt,borderwidth = 0,highlightthickness = 0,
             command = self.order,relief = "flat")
         orderbuttonmt.place(x = 371, y = 431,width = 123,height = 50)
 
-        imgmtback = PhotoImage(file = f"imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
+        imgmtback = PhotoImage(file = f"images/imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
         mtbackbutton = Button(milkteawindow,image = imgmtback,borderwidth = 0,highlightthickness = 0,
             command = milkteawindow.btn_clicked, relief = "flat")
         mtbackbutton.place(x = 222, y = 435,width = 124,height = 41)
@@ -545,6 +556,7 @@ class MainMenu(Toplevel):
         y_coordinate = int((screen_height/2) - (window_height/2))
         mainmenu.geometry("{}x{}+{}+{}".format(window_width, window_height, x_coordinate, y_coordinate))
 
+        mainmenu.iconbitmap('icon.ico')
         mainmenu.title("Drakeyshan Milktea Shop: "+current_user)
         mainmenu.configure(bg = "#ffffff")
         canvas = Canvas(mainmenu,bg = "#ffffff",height = 490,width = 730,
@@ -552,26 +564,26 @@ class MainMenu(Toplevel):
         canvas.place(x = 0, y = 0)
 
         #MAIN MENU WINDOW-BACKGROUND
-        background_img = PhotoImage(file = f"backgroundmm.png")
+        background_img = PhotoImage(file = f"images/backgroundmm.png")
         background = canvas.create_image(366.0, 243.5,image=background_img)
 
         #MAIN MENU WINDOW-BUTTONS
-        imgmt = PhotoImage(file = f"img0mm.png")
+        imgmt = PhotoImage(file = f"images/img0mm.png")
         mtbutton = Button(mainmenu, image = imgmt,borderwidth = 0,highlightthickness = 0,
             command = mainmenu.btn_milktea,relief = "flat")
         mtbutton.place(x = 300, y = 113,width = 130,height = 74)
 
-        imft = PhotoImage(file = f"img1mm.png")
+        imft = PhotoImage(file = f"images/img1mm.png")
         ftbutton = Button(mainmenu, image = imft,borderwidth = 0,highlightthickness = 0,
             command = mainmenu.btn_fruittea,relief = "flat")
         ftbutton.place(x = 300, y = 196.03,width = 130,height = 74)
 
-        imgc = PhotoImage(file = f"imgsmoothies.png")
+        imgc = PhotoImage(file = f"images/imgsmoothies.png")
         chocobutton = Button(mainmenu, image = imgc,borderwidth = 0,highlightthickness = 0,
             command = mainmenu.btn_smoothies,relief = "flat")
         chocobutton.place(x = 300, y = 279.07,width = 130,height = 74)
 
-        imgcrt = PhotoImage(file = f"imgcart.png") 
+        imgcrt = PhotoImage(file = f"images/imgcart.png") 
         chocobutton = Button(mainmenu, image = imgcrt,borderwidth = 0,highlightthickness = 0,
             command = mainmenu.btn_cart,relief = "flat")
         chocobutton.place(x = 300, y = 397,width = 130,height = 74)
@@ -627,6 +639,8 @@ class SignUpFrame(Toplevel):
         y_coordinate = int((screen_height/2) - (window_height/2))
         signupwindow.geometry("{}x{}+{}+{}".format(window_width, window_height, x_coordinate, y_coordinate))
         
+        signupwindow.protocol("WM_DELETE_WINDOW", disable_event)
+        signupwindow.iconbitmap('icon.ico')
         signupwindow.title("Signup Window")
         signupwindow.configure(bg = "#ffffff")
         canvas = Canvas(signupwindow,bg = "#ffffff",height = 490,width = 730,
@@ -634,7 +648,7 @@ class SignUpFrame(Toplevel):
         canvas.place(x = 0, y = 0)
 
         #REGISTER WINDOW-BACKGROUND
-        background_img = PhotoImage(file = f"backgroundsu.png")
+        background_img = PhotoImage(file = f"images/backgroundsu.png")
         background = canvas.create_image(465.5, 237.5,image=background_img)
 
         #REGISTER WINDOW-TEXTBOX
@@ -657,12 +671,12 @@ class SignUpFrame(Toplevel):
         password_entry_reg.place(x = 90, y = 330,width = 215,height = 20)
 
         #REGISTER WINDOW-BUTTONS
-        imgcreate = PhotoImage(file = f"img0su.png")
+        imgcreate = PhotoImage(file = f"images/img0su.png")
         createbutton = Button(signupwindow, image = imgcreate,borderwidth = 0,highlightthickness = 0,
             command = self.register_user,relief = "flat")
         createbutton.place(x = 75, y = 379,width = 195,height = 74)
 
-        imgexit = PhotoImage(file = f"img1su.png")
+        imgexit = PhotoImage(file = f"images/img1su.png")
         exitbutton = Button(signupwindow, image = imgexit,borderwidth = 0,highlightthickness = 0,
             command = self.exit_reg,relief = "flat")
         exitbutton.place(x = 6, y = 3,width = 31,height = 40)
@@ -733,15 +747,14 @@ class LoginFrame():
         #LOGIN WINDOW-PROPERTIES
         window_height = 490
         window_width = 730
-
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
-
         x_coordinate = int((screen_width/2) - (window_width/2))
         y_coordinate = int((screen_height/2) - (window_height/2))
-        
         self.root.geometry("{}x{}+{}+{}".format(window_width, window_height, x_coordinate, y_coordinate))
 
+        self.root.protocol("WM_DELETE_WINDOW", disable_event)
+        self.root.iconbitmap('icon.ico')
         self.root.title("Drakeyshan Milktea Shop Login")
         self.root.configure(bg = "#ffffff")
         canvas = Canvas(self.root,bg = "#ffffff",height = 490,width = 730,
@@ -749,7 +762,7 @@ class LoginFrame():
         canvas.place(x = 0, y = 0)
 
         #LOGIN WINDOW-BACKGROUND
-        background_img = PhotoImage(file = f"backgroundlogin.png")
+        background_img = PhotoImage(file = f"images/backgroundlogin.png")
         background = canvas.create_image(297.0, 251.5,image=background_img)
 
         #LOGIN WINDOW-TEXTBOX
@@ -766,17 +779,17 @@ class LoginFrame():
         password_entry_login.place(x = 470, y = 245,width = 215,height = 20)
 
         #LOGIN WINDOW-BUTTONS
-        imglogin = PhotoImage(file = f"img0login.png")
+        imglogin = PhotoImage(file = f"images/img0login.png")
         loginbutton = Button(image = imglogin,borderwidth = 0,highlightthickness = 0,
             command = self.login_verify,relief = "flat")
         loginbutton.place(x = 501, y = 297,width = 100,height = 74)
 
-        imgreg = PhotoImage(file = f"img1login.png")
+        imgreg = PhotoImage(file = f"images/img1login.png")
         registerbutton = Button(image = imgreg,borderwidth = 0,highlightthickness = 0,
             command = self.register_window,relief = "flat")
         registerbutton.place(x = 486, y = 431,width = 132,height = 24)
 
-        imgexit = PhotoImage(file = f"img2login.png")
+        imgexit = PhotoImage(file = f"images/img2login.png")
         exitbutton = Button(image = imgexit,borderwidth = 0,highlightthickness = 0,
             command = self.exit_reg,relief = "flat")
         exitbutton.place(x = 683, y = 10,width = 31,height = 40)
@@ -827,7 +840,9 @@ class LoginFrame():
         else:
             messagebox.showerror(title="User Does Not Exist", message="There are no such user. Please register an account first.")
 
-       
+
+def disable_event():
+        pass   
 if __name__ == "__main__":
     root = Tk()
     app_instance = LoginFrame(root)
