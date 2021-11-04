@@ -5,9 +5,6 @@ from tkinter.simpledialog import askstring
 from tkinter.messagebox import showinfo
 import os
 
-
-
-
 #CLASS OF CART WINDOW
 class Cart(Toplevel):
     def __init__(self, cart):
@@ -63,16 +60,16 @@ class Cart(Toplevel):
 
         imgcartback = PhotoImage(file = f"images/imgcartback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
         cartbackbutton = Button(cartwindow,image = imgcartback,borderwidth = 0,highlightthickness = 0,
-            command = cartwindow.btn_clicked, relief = "flat")
+            command = cartwindow.back_button, relief = "flat")
         cartbackbutton.place(x = 235, y = 436,width = 124,height = 41)
 
         #CART WINDOW-LOOPINGS
         cartwindow.resizable(False, False)
         cartwindow.mainloop()
 
-        #FUNCTIONS
-    def btn_clicked(self):
-
+    #FUNCTIONS
+    def back_button(self):
+        #Function for back button under the Cart Window    
         back_option = messagebox.askquestion("Changed your mind?", "If you go back to menu, your current orders will be deleted. Do you wish to proceed?")
 
         if back_option == "yes":
@@ -88,8 +85,8 @@ class Cart(Toplevel):
 
             self.destroy()
 
-
     def check_arr_types(self):
+        #Function to add milktea flavor names
         len_type = len(arr_types)
         str_type = ""
         for i in range(len_type):
@@ -97,6 +94,7 @@ class Cart(Toplevel):
         return str_type
 
     def check_arr_qty(self):
+        #Function to add milktea flavor quantities
         len_qty = len(arr_qty)
         str_qty = "" 
         for i in range(len_qty):
@@ -104,6 +102,7 @@ class Cart(Toplevel):
         return str_qty
 
     def check_arr_price(self):
+        #Function to add milktea flavor prices
         len_price = len(arr_price)
         str_price = ""
         for i in range(len_price):
@@ -111,12 +110,13 @@ class Cart(Toplevel):
         return str_price    
 
     def check_out(self):
+        #Function for Cart check-out
         global milktea_total
 
         if milktea_total == 0:
             messagebox.showwarning("Notice","You don't have any orders.")
         else:    
-            payment = askinteger("Enter Payment","The total of your order is "+str(milktea_total)+". How much will you pay?", justify = "center")
+            payment = askinteger("Enter Payment","The total of your order is "+str(milktea_total)+". How much will you pay?")
             change_coins = payment - milktea_total
             if payment < milktea_total:
                 messagebox.showerror("Payment error", "You have entered an insufficient amount. Please try again.")
@@ -161,7 +161,7 @@ class Smoothies(Toplevel):
 
         imgcback = PhotoImage(file = f"images/imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
         cbackbutton = Button(smoothieswindow,image = imgcback,borderwidth = 0,highlightthickness = 0,
-            command = smoothieswindow.btn_clicked, relief = "flat")
+            command = smoothieswindow.back_button, relief = "flat")
         cbackbutton.place(x = 229, y = 405,width = 124,height = 41)
 
         #SMOOTHIES WINDOW-SPINBOX
@@ -182,11 +182,13 @@ class Smoothies(Toplevel):
         smoothieswindow.mainloop()
 
     #FUNCTIONS
-    def btn_clicked(self):
+    def back_button(self):
+        #Function for back button under Chocolate window
         self.destroy()
         menu=MainMenu(self)
 
     def order(self):
+        #Function for ordering under Chocolate window
         global milktea_total
 
         arr_chmousse = []
@@ -279,7 +281,7 @@ class FruitTea(Toplevel):
 
         imgftback = PhotoImage(file = f"images/imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
         ftbackbutton = Button(fruitteawindow,image = imgftback,borderwidth = 0,highlightthickness = 0,
-            command = fruitteawindow.btn_clicked, relief = "flat")
+            command = fruitteawindow.back_button, relief = "flat")
         ftbackbutton.place(x = 229, y = 435,width = 124,height = 41)
 
         #FRUITTEA WINDOW-SPINBOX
@@ -308,11 +310,13 @@ class FruitTea(Toplevel):
         fruitteawindow.mainloop()
     
     #FRUITTEA WINDOW-FUNCTIONS
-    def btn_clicked(self):
+    def back_button(self):
+        #Function for back button under Fruit tea window
         self.destroy()
         menu=MainMenu(self)
 
     def order(self):
+        #Function for order button under Fruit tea window
         global milktea_total
         arr_grape = []
         arr_lychee = []
@@ -423,7 +427,7 @@ class MilkTea(Toplevel):
 
         imgmtback = PhotoImage(file = f"images/imgmtback.png")     #NO FUNCTION YET -- BACK TO MAIN FRAME FOR SELECTION OF TYPE OF DRINK
         mtbackbutton = Button(milkteawindow,image = imgmtback,borderwidth = 0,highlightthickness = 0,
-            command = milkteawindow.btn_clicked, relief = "flat")
+            command = milkteawindow.back_button, relief = "flat")
         mtbackbutton.place(x = 222, y = 435,width = 124,height = 41)
 
         #MILKTEA WINDOW-SPINBOX
@@ -456,12 +460,13 @@ class MilkTea(Toplevel):
         milkteawindow.mainloop()
 
     #MILKTEA WINDOW-FUNCTIONS
-    def btn_clicked(self):
+    def back_button(self):
+        #Function for back button under Milktea window
         self.destroy()
         menu=MainMenu(self)  
 
     def order(self):
-
+        #Function for order button under Milktea window
         global milktea_total
 
         global arr_types
@@ -594,27 +599,28 @@ class MainMenu(Toplevel):
 
     #MAIN MENU WINDOW-FUNCTIONS
 
-    def btn_clicked(self):
-        print(current_user)
-
     def btn_milktea(self):
+        #Function for viewing Milktea menu
         self.withdraw()
         milktea = MilkTea(self)
 
     def btn_fruittea(self):
+        #Function for viewing Fruittea menu
         self.withdraw() 
         fruittea = FruitTea(self)
 
     def btn_smoothies(self):
+        #Function for viewing Chocolate menu
         self.withdraw()
         smoothies = Smoothies(self) 
 
-
     def btn_cart(self):
+        #Function for viewing User's cart
         cart = Cart(self)
         self.menu_frame.withdraw()
 
     def hide_window(self):
+        #Function for hiding window
         self.menu_frame.withdraw()
     
 #CLASS OF REGISTER WINDOW
@@ -686,10 +692,8 @@ class SignUpFrame(Toplevel):
         signupwindow.mainloop()
 
     #FUNCTIONS
-    def btn_clicked():
-        print("Button Clicked")
-
     def register_user(self):
+        #Function for registering new account
         username_info = username_entry_reg.get()
         password_info = password_entry_reg.get()
         email_info = email_entry_reg.get()
@@ -707,20 +711,24 @@ class SignUpFrame(Toplevel):
         self.signup_frame.show_window()
 
     def exit_reg(self):
+        #Function for cancelling registration
         msgBox = messagebox.askquestion('Exit Registration', 'Are you sure you want to cancel your registration?', icon = 'error')
         if msgBox == 'yes':
             self.destroy()
             self.signup_frame.show_window()
 
     def hide_window(self):
+        #Function for hiding window
         self.root.withdraw()
 
     def show_window(self):
+        #Function for showing window
         self.root.update()
         self.root.deiconify()          
         
 #CLASS OF LOGIN WINDOW
 class LoginFrame():  
+    #LOGIN WINDOW-ATTRIBUTES
     def __init__(self, parent):
         self.root = parent
         global current_user
@@ -736,9 +744,7 @@ class LoginFrame():
 
         global milktea_total
         milktea_total=0
-        
-
-        #LOGIN WINDOW-ATTRIBUTES
+    
         global username_verify
         global password_verify
         username_verify = StringVar()
@@ -791,7 +797,7 @@ class LoginFrame():
 
         imgexit = PhotoImage(file = f"images/img2login.png")
         exitbutton = Button(image = imgexit,borderwidth = 0,highlightthickness = 0,
-            command = self.exit_reg,relief = "flat")
+            command = self.exit_login,relief = "flat")
         exitbutton.place(x = 683, y = 10,width = 31,height = 40)
 
         #LOGIN WINDOW-LOOPINGS
@@ -800,25 +806,27 @@ class LoginFrame():
 
     #FUNCTIONS
     def hide_window(self):
+        #Function for hiding window
         self.root.withdraw()
 
     def show_window(self):
+        #Function for showing window
         self.root.update()
         self.root.deiconify()
 
-    def exit_reg(self):
+    def exit_login(self):
+        #Function for exiting login screen
         msgBox = messagebox.askquestion('Exit Login', 'Are you sure you want to exit?', icon = 'error')
         if msgBox == 'yes':
             self.root.withdraw()       
 
-    def btn_clicked(self):
-        print("Button Clicked")
-
     def register_window(self):
+        #Function for viewing register window
         self.hide_window()
         signup = SignUpFrame(self)
 
     def login_verify(self):
+        #Function for verifying login credentials
         username_login = username_verify.get()
         password_login = password_verify.get()
 
@@ -840,9 +848,10 @@ class LoginFrame():
         else:
             messagebox.showerror(title="User Does Not Exist", message="There are no such user. Please register an account first.")
 
-
 def disable_event():
-        pass   
+    #Function for disabling an event
+    pass   
+
 if __name__ == "__main__":
     root = Tk()
     app_instance = LoginFrame(root)
